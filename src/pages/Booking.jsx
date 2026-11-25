@@ -35,7 +35,7 @@ function FieldError({ id, children }) {
     <p
       id={id}
       role="alert"
-      className="mt-1.5 flex items-start gap-1.5 text-xs font-medium text-navy"
+      className="mt-1.5 flex items-start gap-1.5 text-xs font-medium text-cream"
     >
       <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-coral-500" />
       {children}
@@ -210,7 +210,7 @@ export default function Booking() {
       <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="eyebrow">Book a meeting</p>
-          <h1 className="mt-2 font-display text-3xl font-semibold tracking-[-0.02em] sm:text-4xl">
+          <h1 className="mt-2 text-3xl font-bold tracking-[-0.02em] sm:text-4xl">
             {step === 'details' ? 'Tell us what you need' : 'Payment'}
           </h1>
         </div>
@@ -219,27 +219,27 @@ export default function Booking() {
           <li className="flex items-center gap-2">
             <span
               className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold ${
-                step === 'payment' ? 'bg-navy text-cream' : 'bg-coral-500 text-navy'
+                step === 'payment' ? 'bg-cream/15 text-cream' : 'bg-coral-500 text-navy'
               }`}
             >
               {step === 'payment' ? <CheckIcon className="h-3.5 w-3.5" /> : '1'}
             </span>
-            <span className={step === 'details' ? 'font-semibold text-navy' : 'text-navy-500'}>
+            <span className={step === 'details' ? 'font-semibold text-cream' : 'text-cream/65'}>
               Details
             </span>
           </li>
-          <li aria-hidden="true" className="h-px w-6 bg-navy/15" />
+          <li aria-hidden="true" className="h-px w-6 bg-cream/15" />
           <li className="flex items-center gap-2">
             <span
               className={`flex h-6 w-6 items-center justify-center rounded-full text-xs font-bold ${
                 step === 'payment'
                   ? 'bg-coral-500 text-navy'
-                  : 'bg-navy/[0.06] text-navy-500'
+                  : 'bg-cream/[0.08] text-cream/65'
               }`}
             >
               2
             </span>
-            <span className={step === 'payment' ? 'font-semibold text-navy' : 'text-navy-500'}>
+            <span className={step === 'payment' ? 'font-semibold text-cream' : 'text-cream/65'}>
               Payment
             </span>
           </li>
@@ -251,10 +251,10 @@ export default function Booking() {
           {step === 'details' ? (
             <form onSubmit={handleContinue} noValidate className="card animate-fade-up p-6 sm:p-8">
               <div>
-                <h2 className="font-display text-2xl font-semibold tracking-[-0.01em]">
+                <h2 className="text-2xl font-bold tracking-[-0.01em]">
                   Your details
                 </h2>
-                <p className="mt-1.5 text-sm text-navy-500">
+                <p className="mt-1.5 text-sm text-cream/65">
                   Used to send your booking and help the operator prepare. We never ask for a CV,
                   ID documents or other sensitive data.
                 </p>
@@ -314,7 +314,7 @@ export default function Booking() {
                           onChange={(event) => update('role', event.target.value)}
                           className="peer sr-only"
                         />
-                        <span className="block cursor-pointer rounded-xl border border-line bg-cream-50 px-3 py-3 text-center text-sm font-medium text-navy-500 transition hover:border-navy/30 peer-checked:border-coral-500 peer-checked:bg-coral-50 peer-checked:text-navy peer-focus-visible:ring-2 peer-focus-visible:ring-navy-700 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-cream">
+                        <span className="block cursor-pointer rounded-xl border border-line bg-navy-900 px-3 py-3 text-center text-sm font-medium text-cream/65 transition hover:border-cream/30 peer-checked:border-coral-500 peer-checked:bg-coral-500/15 peer-checked:text-cream peer-focus-visible:ring-2 peer-focus-visible:ring-coral-400 peer-focus-visible:ring-offset-2 peer-focus-visible:ring-offset-navy-950">
                           {role}
                         </span>
                       </label>
@@ -325,11 +325,11 @@ export default function Booking() {
               </fieldset>
 
               <div className="mt-8 border-t border-line pt-6">
-                <h2 className="font-display text-2xl font-semibold tracking-[-0.01em]">
+                <h2 className="text-2xl font-bold tracking-[-0.01em]">
                   What you want to cover
                 </h2>
-                <p className="mt-1.5 text-sm text-navy-500">
-                  Specific beats broad. A clear goal helps your operator spend the half hour well.
+                <p className="mt-1.5 text-sm text-cream/65">
+                  Specific beats broad. A clear goal helps your operator make the session count.
                 </p>
 
                 <div className="mt-6">
@@ -353,14 +353,14 @@ export default function Booking() {
                 <div className="mt-5 space-y-4">
                   <div>
                     <p className="label mb-1">Specific questions</p>
-                    <p className="-mt-0.5 mb-3 text-xs text-navy-500">
+                    <p className="-mt-0.5 mb-3 text-xs text-cream/65">
                       Two questions is the sweet spot. Add a third if it is important.
                     </p>
                   </div>
 
                   <div>
-                    <label htmlFor="question1" className="mb-1.5 block text-sm text-navy-500">
-                      Question 1 <span className="text-navy/35">required</span>
+                    <label htmlFor="question1" className="mb-1.5 block text-sm text-cream/65">
+                      Question 1 <span className="text-cream/50">required</span>
                     </label>
                     <input
                       id="question1"
@@ -379,8 +379,8 @@ export default function Booking() {
                   </div>
 
                   <div>
-                    <label htmlFor="question2" className="mb-1.5 block text-sm text-navy-500">
-                      Question 2 <span className="text-navy/35">required</span>
+                    <label htmlFor="question2" className="mb-1.5 block text-sm text-cream/65">
+                      Question 2 <span className="text-cream/50">required</span>
                     </label>
                     <input
                       id="question2"
@@ -399,8 +399,8 @@ export default function Booking() {
                   </div>
 
                   <div>
-                    <label htmlFor="question3" className="mb-1.5 block text-sm text-navy-500">
-                      Question 3 <span className="text-navy/35">optional</span>
+                    <label htmlFor="question3" className="mb-1.5 block text-sm text-cream/65">
+                      Question 3 <span className="text-cream/50">optional</span>
                     </label>
                     <input
                       id="question3"
@@ -415,8 +415,8 @@ export default function Booking() {
                 </div>
               </div>
 
-              <div className="mt-8 rounded-xl border border-line bg-cream-100 p-4">
-                <label className="flex items-start gap-3 text-sm leading-relaxed text-navy-500">
+              <div className="mt-8 rounded-xl border border-line bg-navy-800/60 p-4">
+                <label className="flex items-start gap-3 text-sm leading-relaxed text-cream/65">
                   <input
                     id="consent"
                     type="checkbox"
@@ -427,7 +427,7 @@ export default function Booking() {
                     aria-describedby={errors.consent ? 'consent-error' : undefined}
                   />
                   <span>
-                    I understand this is a 30-minute advice call. No job, offer, funding, promotion
+                    I understand this is an advice session. No job, offer, funding, promotion
                     or other outcome is guaranteed.
                   </span>
                 </label>
@@ -456,30 +456,30 @@ export default function Booking() {
                 <h2
                   ref={paymentHeadingRef}
                   tabIndex={-1}
-                  className="font-display text-2xl font-semibold tracking-[-0.01em] outline-none"
+                  className="text-2xl font-bold tracking-[-0.01em] outline-none"
                 >
                   Demo checkout
                 </h2>
 
-                <div className="mt-4 flex items-start gap-3 rounded-xl border border-coral-200 bg-coral-50 p-4 text-sm text-navy">
-                  <LockIcon className="mt-0.5 h-5 w-5 shrink-0 text-coral-700" />
+                <div className="mt-4 flex items-start gap-3 rounded-xl border border-coral-500/30 bg-coral-500/10 p-4 text-sm text-cream">
+                  <LockIcon className="mt-0.5 h-5 w-5 shrink-0 text-coral-400" />
                   <div>
                     <p className="font-semibold">Demo payment, nothing is charged.</p>
-                    <p className="mt-0.5 text-navy-500">
+                    <p className="mt-0.5 text-cream/65">
                       No card details are collected. This step exists to show the full booking flow.
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-6 rounded-2xl bg-gradient-to-br from-navy-900 to-navy-700 p-5 text-cream shadow-lift sm:p-6">
+                <div className="mt-6 rounded-2xl border border-cream/10 bg-gradient-to-br from-navy-900 to-navy-700 p-5 text-cream shadow-lift sm:p-6">
                   <div className="flex items-start justify-between">
                     <div className="h-7 w-10 rounded-md bg-gradient-to-br from-coral-400 to-coral-600" />
-                    <CreditCardIcon className="h-6 w-6 text-cream/50" />
+                    <CreditCardIcon className="h-6 w-6 text-cream/60" />
                   </div>
                   <p className="mt-8 font-mono text-lg tracking-[0.18em] text-cream/90">
                     •••• •••• •••• 4242
                   </p>
-                  <div className="mt-5 flex items-end justify-between text-[11px] uppercase tracking-wider text-cream/50">
+                  <div className="mt-5 flex items-end justify-between text-[11px] uppercase tracking-wider text-cream/60">
                     <span>WinMe demo card</span>
                     <span>12 / 30</span>
                   </div>
@@ -487,8 +487,8 @@ export default function Booking() {
 
                 <dl className="mt-6 space-y-2 border-t border-line pt-5 text-sm">
                   <div className="flex justify-between gap-4">
-                    <dt className="text-navy-500">
-                      {activeService ? activeService.title : '30-minute advice call'}
+                    <dt className="text-cream/65">
+                      {activeService ? activeService.title : 'Advice session'}
                     </dt>
                     <dd className="font-medium">€{price}</dd>
                   </div>
@@ -501,9 +501,9 @@ export default function Booking() {
                 {payError ? (
                   <div
                     role="alert"
-                    className="mt-5 flex items-start gap-2.5 rounded-xl border border-coral-300 bg-coral-50 p-3.5 text-sm text-navy"
+                    className="mt-5 flex items-start gap-2.5 rounded-xl border border-coral-500/40 bg-coral-500/10 p-3.5 text-sm text-cream"
                   >
-                    <AlertIcon className="mt-0.5 h-5 w-5 shrink-0 text-coral-700" />
+                    <AlertIcon className="mt-0.5 h-5 w-5 shrink-0 text-coral-400" />
                     <p>{payError}</p>
                   </div>
                 ) : null}
@@ -524,7 +524,7 @@ export default function Booking() {
                   )}
                 </button>
 
-                <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-navy-500">
+                <p className="mt-3 flex items-center justify-center gap-1.5 text-center text-xs text-cream/65">
                   <ShieldIcon className="h-3.5 w-3.5" />
                   Simulated checkout · no real payment · advice only
                 </p>
@@ -535,15 +535,15 @@ export default function Booking() {
 
         <aside className="animate-fade-up [animation-delay:100ms]">
           <div className="card p-6 lg:sticky lg:top-28">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-400">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
               Your session
             </p>
 
             <div className="mt-4 flex items-center gap-3 border-b border-line pb-5">
               <Avatar name={exec.name} gradient={exec.gradient} size="md" />
               <div className="min-w-0">
-                <p className="font-display text-lg font-semibold leading-tight">{exec.name}</p>
-                <p className="mt-0.5 text-xs text-navy-500">
+                <p className="text-lg font-bold leading-tight">{exec.name}</p>
+                <p className="mt-0.5 text-xs text-cream/65">
                   {exec.title} · {exec.company}
                 </p>
               </div>
@@ -551,37 +551,37 @@ export default function Booking() {
 
             <div className="mt-5 space-y-3 text-sm">
               <div className="flex gap-2.5">
-                <CalendarIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-700" />
+                <CalendarIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-400" />
                 <div>
                   <p className="font-medium">{formatSlotLong(slot)}</p>
-                  <p className="mt-0.5 text-xs text-navy-500">30 minutes on Google Meet</p>
+                  <p className="mt-0.5 text-xs text-cream/65">Live video session on Google Meet</p>
                   <Link
                     to={profilePath}
-                    className="mt-2 inline-block text-xs font-semibold text-navy underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
+                    className="mt-2 inline-block text-xs font-semibold text-cream underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
                   >
                     Change time
                   </Link>
                 </div>
               </div>
               <div className="flex gap-2.5">
-                <GlobeIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-700" />
-                <p className="text-xs leading-relaxed text-navy-500">Times shown in {zoneLabel()}</p>
+                <GlobeIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-400" />
+                <p className="text-xs leading-relaxed text-cream/65">Times shown in {zoneLabel()}</p>
               </div>
             </div>
 
             <div className="mt-5 flex items-baseline justify-between gap-4 border-t border-line pt-4">
-              <span className="text-sm text-navy-500">Session</span>
+              <span className="text-sm text-cream/65">Session</span>
               <span className="text-sm font-medium">
                 {activeService ? activeService.title : 'General advice call'}
               </span>
             </div>
 
             <div className="mt-3 flex items-baseline justify-between">
-              <span className="text-sm text-navy-500">Total</span>
-              <span className="font-display text-2xl font-semibold">€{price}</span>
+              <span className="text-sm text-cream/65">Total</span>
+              <span className="text-2xl font-bold">€{price}</span>
             </div>
 
-            <p className="mt-4 rounded-xl bg-cream-100 p-3 text-[11px] leading-relaxed text-navy-500">
+            <p className="mt-4 rounded-xl bg-navy-800/60 p-3 text-[11px] leading-relaxed text-cream/65">
               Advice only. You are booking the operator&apos;s time, not a guaranteed outcome.
               Full refund if they do not show up.
             </p>

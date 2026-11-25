@@ -1,8 +1,10 @@
 # PROJECT_STATE
 
-State of WinMe on **2026-11-24**, written from source.
+State of WinMe on **2026-11-25**, written from source.
 
 React SPA on Vite base `/winme/` under `HashRouter`. Demo-first: with no environment URL the app makes no booking requests. Ten fictional operators and seven fixed-price services.
+
+Copy sells a **session**, not a fixed-length call: the unit is a "working session" (Home teaser, Services, Browse), a "focused session" (Home steps and closing, ForExecutives) or just "session" (pricing lines, checklist, confirmation). No page states a duration; prices read "per session". The 30-minute slot grid in `src/lib/slots.js` and the 30-minute booking logic are unchanged.
 
 ## Routes
 
@@ -22,9 +24,9 @@ React SPA on Vite base `/winme/` under `HashRouter`. Demo-first: with no environ
 
 ## Page behaviour
 
-**Home** — fixed hero headline, "Book a meeting" CTA, "How it works" scroll link and a ticket with the first featured operator's next free local slot, price, rating and sample question ("Checking times" while loading). A teaser after the network section shows the first three services with prices and links to `/services`. One navy three-step band, three featured operators, trust items, four FAQs and a closing CTA.
+**Home** — the headline "You don't need your own network, you can access ours" plays a one-time per-character zoom on load. "Book a meeting" CTA and "How it works" scroll link. Behind the copy, a lazy-loaded WebGL dotted globe rises from the bottom of the hero and is cropped by gradients, with two floating operator cards over it: Priya Raghavan upper left and Tomas Lehtinen lower right. A teaser after the network section shows the first three services with prices and links to `/services`. One navy three-step band, three featured operators, trust items, four FAQs and a closing CTA.
 
-**Services** — intro: a fixed-price 30-minute call around one job, talked through live, nothing uploaded, advice only. Seven cards give title, price, description and "Offered by" rows (avatar, name, title, company, "Book" link to `/executives/:id?service=:serviceId`). A final "Have a service of your own?" card links to `/for-executives` with "Place your offer".
+**Services** — h1 "One job, one working session, a fixed price"; intro: a fixed-price working session around one job, talked through live, nothing uploaded, advice only; the stat row reads Services / Seven, Scope / One job per session, Format / Talk it through live. Seven cards give title, price, description and "Offered by" rows (avatar, name, title, company, "Book" link to `/executives/:id?service=:serviceId`). A final "Have a service of your own?" card links to `/for-executives` with "Place your offer".
 
 **Browse** — search covers name, title, company, bio, topics and sample questions. Topic filters combine with AND; `?topic=` preselects a chip and toggles sync with `replace`. Sort by recommended, price or rating. `aria-live` result count; cards number in display order and show the next free local slot or "No times in the next 14 days". Availability loads in parallel. Empty results offer clear-filters.
 
@@ -40,7 +42,19 @@ React SPA on Vite base `/winme/` under `HashRouter`. Demo-first: with no environ
 
 **NotFound** — static 404 with a home CTA.
 
-**Shell** — navy demo banner; cream header with Services / The network / Place an offer / My bookings, coral "Book a meeting" and a mobile menu (`aria-expanded`, `aria-controls`, Escape and navigation close it). Footer repeats brand, links and claims. Skip link on focus.
+**Shell** — navy demo banner; cream header with The network / Services / Place an offer / My bookings, coral "Book a meeting" and a mobile menu (`aria-expanded`, `aria-controls`, Escape and navigation close it). Footer repeats brand, links and claims. Skip link on focus.
+
+## Hero globe
+
+`src/components/HeroGlobe.jsx` loads through `React.lazy`/`Suspense`, keeping `three` out of the initial bundle. It imports `world-atlas/land-110m.json` with a dynamic import, rasterises the land into a 2048×1024 mask with `d3-geo`, and samples that mask for an instanced cream dot grid. A cream graticule and coastlines sit over an opaque navy sphere, with coral markers at Riga, Helsinki, London, Berlin, New York, Kolkata, Mumbai and Singapore.
+
+The orthographic camera frames a unit globe in a square canvas. The group tilts 0.4 rad, starts at −25° so Europe faces the camera, and spins about Y at 0.1 rad/s plus `spinRef.current.extra`. The loop stops while the document is hidden or the container is off-screen, resizes with a `ResizeObserver`, renders one static frame under `prefers-reduced-motion`, and disposes the scene and renderer on unmount. No runtime network requests.
+
+## Hero motion and cards
+
+`src/components/ZoomText.jsx` splits the headline into word wrappers (inline-block, nowrap) and per-character spans. Every character runs the `zoom-out` keyframes in `src/index.css` for 0.5 s with `both` fill; the delay is `STAGGER` (0.04 s) times its position across the sentence, spaces included. It runs once. The h1 carries the full sentence as `aria-label` and the animated spans are `aria-hidden`; with reduced motion the characters render immediately with no animation.
+
+`src/components/GlobeProfileCard.jsx` renders two `Link` cards anchored in percentages to the globe frame: Priya Raghavan (Asia/Kolkata) at the upper left and Tomas Lehtinen (Europe/Helsinki) at the lower right. Each shows the avatar, name, title and company, a coral price pill, and, from `sm` up, the next free slot in the visitor's local zone. The second card is hidden below 640 px. A slow 8 s / 11 s float is disabled under reduced motion.
 
 ## Data model
 
@@ -111,7 +125,7 @@ One key: `winme.bookings.v1`, a JSON array newest-first. `saveBooking` replaces 
 - Demo taken slots exist only in the browser and not in the backend.
 - No rate limiting, spam protection or duplicate-offer detection.
 - `.ics` is UTC-only with `UID:<id>@winme.demo`; one availability window per weekday.
-- No repo test runner, error boundary, code splitting, i18n or analytics. Accessibility checked manually.
+- No repo test runner, error boundary, i18n or analytics. The Home globe is the only lazy-loaded route component. Accessibility checked manually.
 
 ## Changelog
 
@@ -119,3 +133,8 @@ One key: `winme.bookings.v1`, a JSON array newest-first. `saveBooking` replaces 
 - 2026-11-23 — Moved the site base and package name from `askly` to `winme`; updated README and deploy notes.
 - 2026-11-23 — Fixed in-page anchors under `HashRouter`; added live next-slot data on Home and Browse, `?topic` preselect, profile empty states, booking summary and length limits, clear-bookings confirmation, seeded demo availability, and strict LinkedIn validation on client and server.
 - 2026-11-24 — Added the seven-service catalogue, `/services`, Home teaser, profile session types, service-aware pricing and bookings, service labels, and the optional offer service field; appended an additive `service` column to `ExecInterest`.
+- 2026-11-25 — Added a lazy-loaded dotted globe to the Home hero using bundled `world-atlas` land data, an orthographic renderer and spin ref input, with reduced-motion and off-screen pause handling.
+- 2026-11-25 — Added the one-time character zoom to the Home headline and two floating operator cards over the globe, with reduced-motion fallbacks and responsive placement.
+- 2026-11-25 — Removed the next-free slot chip under the Home hero CTA and its now-unused label helpers and Luxon import.
+- 2026-11-25 — Swapped the first two header nav links so "The network" precedes "Services" in both the desktop bar and the mobile menu.
+- 2026-11-25 — Rewrote every 30-minute phrase in the JSX copy to a session-based system (working/focused session, "per session" pricing) across Home, Services, Browse, ExecutiveProfile, ExecutiveCard, Booking, Confirmed, ForExecutives and the footer; slot and duration logic untouched.

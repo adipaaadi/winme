@@ -39,16 +39,15 @@ export default {
           800: '#9E2E25',
           900: '#7A241D',
         },
-        muted: '#4E5F7E',
-        line: '#DCD0BC',
+        muted: 'rgba(244, 237, 224, 0.66)',
+        line: 'rgba(244, 237, 224, 0.12)',
       },
       fontFamily: {
-        sans: ['Manrope', 'ui-sans-serif', 'system-ui', 'sans-serif'],
-        display: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
+        sans: ['Outfit Variable', 'ui-sans-serif', 'system-ui', 'Segoe UI', 'sans-serif'],
       },
       boxShadow: {
-        soft: '0 1px 2px rgba(20, 33, 61, 0.04), 0 16px 40px -24px rgba(20, 33, 61, 0.22)',
-        lift: '0 2px 4px rgba(20, 33, 61, 0.05), 0 28px 56px -28px rgba(20, 33, 61, 0.32)',
+        soft: '0 1px 2px rgba(11, 21, 40, 0.35), 0 18px 44px -26px rgba(11, 21, 40, 0.9)',
+        lift: '0 2px 6px rgba(11, 21, 40, 0.4), 0 30px 60px -30px rgba(11, 21, 40, 1)',
       },
       keyframes: {
         'fade-up': {

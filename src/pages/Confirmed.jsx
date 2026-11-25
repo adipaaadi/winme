@@ -48,9 +48,9 @@ export default function Confirmed() {
       id: `question-${index}`,
       label: `Have an answer ready for: “${question}”`,
     })),
-    { id: 'quiet', label: 'Block 30 minutes in a quiet spot with a stable connection.' },
+    { id: 'quiet', label: 'Set aside uninterrupted time in a quiet spot with a stable connection.' },
     { id: 'tech', label: 'Test your camera and microphone before the call.' },
-    { id: 'early', label: 'Open the meeting link two minutes early so you get the full half hour.' },
+    { id: 'early', label: 'Open the meeting link two minutes early so you start on time.' },
   ];
 
   async function copyLink() {
@@ -73,10 +73,10 @@ export default function Confirmed() {
         <span className="flex h-14 w-14 items-center justify-center rounded-full bg-coral-500 text-navy">
           <CheckIcon className="h-7 w-7" />
         </span>
-        <h1 className="mt-5 font-display text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
+        <h1 className="mt-5 text-4xl font-bold tracking-[-0.03em] sm:text-5xl">
           You’re booked
         </h1>
-        <p className="mt-4 max-w-xl text-navy-500">
+        <p className="mt-4 max-w-xl text-cream/65">
           {booking.demo
             ? 'This demo booking is saved in your browser. Nothing was charged and no real invite was sent.'
             : `We’ve sent the details to ${booking.email}. Your operator has been notified too.`}
@@ -88,8 +88,8 @@ export default function Confirmed() {
         <div className="space-y-6">
           <section className="card p-6 sm:p-8">
             <div className="flex items-center justify-between gap-3 border-b border-line pb-4">
-              <h2 className="font-display text-2xl font-semibold tracking-[-0.01em]">Your call</h2>
-              <span className="rounded-full bg-coral-100 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-navy">
+              <h2 className="text-2xl font-bold tracking-[-0.01em]">Your call</h2>
+              <span className="rounded-full bg-coral-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-cream">
                 Confirmed
               </span>
             </div>
@@ -101,8 +101,8 @@ export default function Confirmed() {
                 size="lg"
               />
               <div>
-                <p className="font-display text-xl font-semibold">{booking.execName}</p>
-                <p className="text-sm text-navy-500">
+                <p className="text-xl font-bold">{booking.execName}</p>
+                <p className="text-sm text-cream/65">
                   {exec ? `${exec.title} · ${exec.company}` : 'WinMe operator'}
                 </p>
                 <div className="mt-3">
@@ -113,20 +113,20 @@ export default function Confirmed() {
 
             <div className="mt-6 grid gap-4 border-y border-line py-5 sm:grid-cols-2">
               <div>
-                <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-navy-400">
+                <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-cream/55">
                   <CalendarIcon className="h-4 w-4" />
                   When
                 </div>
                 <p className="mt-2 text-sm font-semibold">{formatSlotLong(booking.slot)}</p>
-                <p className="mt-0.5 text-xs text-navy-500">30 minutes</p>
+                <p className="mt-0.5 text-xs text-cream/65">Live video session</p>
               </div>
               <div>
-                <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-navy-400">
+                <div className="flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.14em] text-cream/55">
                   <GlobeIcon className="h-4 w-4" />
                   Time zone
                 </div>
                 <p className="mt-2 text-sm font-semibold">Your local time</p>
-                <p className="mt-0.5 break-words text-xs text-navy-500">{zoneLabel()}</p>
+                <p className="mt-0.5 break-words text-xs text-cream/65">{zoneLabel()}</p>
               </div>
             </div>
 
@@ -143,7 +143,7 @@ export default function Confirmed() {
                 Add to calendar
               </button>
             </div>
-            <p className="mt-3 text-center text-xs text-navy-500">
+            <p className="mt-3 text-center text-xs text-cream/65">
               Add to calendar downloads an .ics file that works with Google Calendar, Apple Calendar
               and Outlook.
             </p>
@@ -151,8 +151,8 @@ export default function Confirmed() {
 
           <section className="card p-6 sm:p-8">
             <div className="flex flex-wrap items-center gap-2">
-              <VideoIcon className="h-5 w-5 text-coral-700" />
-              <h2 className="font-display text-2xl font-semibold tracking-[-0.01em]">
+              <VideoIcon className="h-5 w-5 text-coral-400" />
+              <h2 className="text-2xl font-bold tracking-[-0.01em]">
                 Your meeting link
               </h2>
               {booking.demo ? <DemoBadge>Demo link</DemoBadge> : null}
@@ -160,7 +160,7 @@ export default function Confirmed() {
 
             {booking.meetLink ? (
               <>
-                <p className="mt-2 text-sm text-navy-500">
+                <p className="mt-2 text-sm text-cream/65">
                   The room is ready. Open it when it is time to start.
                 </p>
                 <div className="mt-4 flex flex-col gap-2 sm:flex-row">
@@ -178,18 +178,18 @@ export default function Confirmed() {
                     {copied ? 'Copied' : 'Copy link'}
                   </button>
                 </div>
-                <p className="mt-3 break-all rounded-lg bg-cream-100 px-3 py-2 font-mono text-xs text-navy-500">
+                <p className="mt-3 break-all rounded-lg bg-navy-800/60 px-3 py-2 font-mono text-xs text-cream/65">
                   {booking.meetLink}
                 </p>
                 {booking.demo ? (
-                  <div className="mt-3 flex items-start gap-2.5 rounded-xl border border-coral-200 bg-coral-50 p-3.5 text-sm text-navy">
-                    <AlertIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-700" />
+                  <div className="mt-3 flex items-start gap-2.5 rounded-xl border border-coral-500/30 bg-coral-500/10 p-3.5 text-sm text-cream">
+                    <AlertIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-400" />
                     <p>Demo link — this meeting does not exist. Nothing has been scheduled.</p>
                   </div>
                 ) : null}
               </>
             ) : (
-              <p className="mt-2 text-sm text-navy-500">
+              <p className="mt-2 text-sm text-cream/65">
                 Your meeting link will arrive with your calendar invitation.
               </p>
             )}
@@ -197,10 +197,10 @@ export default function Confirmed() {
 
           <section>
             <div className="flex items-start gap-3 border-l-2 border-coral-500 pl-5">
-              <ShieldIcon className="mt-0.5 h-5 w-5 shrink-0 text-coral-700" />
+              <ShieldIcon className="mt-0.5 h-5 w-5 shrink-0 text-coral-400" />
               <div>
-                <h2 className="font-display text-lg font-semibold">Advice only, remember</h2>
-                <p className="mt-1 text-sm leading-relaxed text-navy-500">
+                <h2 className="text-lg font-bold">Advice only, remember</h2>
+                <p className="mt-1 text-sm leading-relaxed text-cream/65">
                   Your operator will share experience and perspective. They are not promising a job,
                   an offer, funding, a promotion or any other outcome. If they do not show up, you
                   get a full refund.
@@ -212,23 +212,23 @@ export default function Confirmed() {
 
         <div className="space-y-6">
           <section className="card p-6">
-            <h2 className="font-display text-xl font-semibold tracking-[-0.01em]">
+            <h2 className="text-xl font-bold tracking-[-0.01em]">
               What to prepare
             </h2>
-            <p className="mt-1 text-sm text-navy-500">
-              A little thought now makes the half hour count.
+            <p className="mt-1 text-sm text-cream/65">
+              A little thought now makes the session count.
             </p>
             <ul className="mt-4 space-y-3">
               {prepItems.map((item) => (
                 <li key={item.id}>
-                  <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-navy-500">
+                  <label className="flex cursor-pointer items-start gap-3 text-sm leading-relaxed text-cream/65">
                     <input
                       type="checkbox"
                       checked={Boolean(checked[item.id])}
                       onChange={() => toggleItem(item.id)}
                       className="mt-0.5 h-4 w-4 shrink-0 rounded accent-coral-600"
                     />
-                    <span className={checked[item.id] ? 'text-navy/45 line-through' : ''}>
+                    <span className={checked[item.id] ? 'text-cream/55 line-through' : ''}>
                       {item.label}
                     </span>
                   </label>
@@ -238,32 +238,32 @@ export default function Confirmed() {
           </section>
 
           <section className="card p-6">
-            <h2 className="font-display text-xl font-semibold tracking-[-0.01em]">
+            <h2 className="text-xl font-bold tracking-[-0.01em]">
               Booking details
             </h2>
             <dl className="mt-4 space-y-3 text-sm">
               <div>
-                <dt className="text-xs text-navy-500">Booked for</dt>
+                <dt className="text-xs text-cream/65">Booked for</dt>
                 <dd className="mt-0.5 font-medium">{booking.name}</dd>
               </div>
               <div>
-                <dt className="text-xs text-navy-500">Email</dt>
+                <dt className="text-xs text-cream/65">Email</dt>
                 <dd className="mt-0.5 break-all font-medium">{booking.email}</dd>
               </div>
               <div>
-                <dt className="text-xs text-navy-500">Role</dt>
+                <dt className="text-xs text-cream/65">Role</dt>
                 <dd className="mt-0.5 font-medium">{booking.role}</dd>
               </div>
               <div>
-                <dt className="text-xs text-navy-500">Session</dt>
+                <dt className="text-xs text-cream/65">Session</dt>
                 <dd className="mt-0.5 font-medium">{booking.serviceName || GENERAL_ADVICE}</dd>
               </div>
               <div className="flex items-center justify-between border-t border-line pt-3">
-                <dt className="text-xs text-navy-500">Reference</dt>
+                <dt className="text-xs text-cream/65">Reference</dt>
                 <dd className="font-mono text-xs font-semibold">{booking.id}</dd>
               </div>
               <div className="flex items-center justify-between">
-                <dt className="text-xs text-navy-500">Paid</dt>
+                <dt className="text-xs text-cream/65">Paid</dt>
                 <dd className="font-semibold">€{booking.price}</dd>
               </div>
             </dl>

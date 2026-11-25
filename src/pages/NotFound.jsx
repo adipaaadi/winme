@@ -7,11 +7,11 @@ export default function NotFound() {
 
   return (
     <div className="container-page flex flex-col items-start py-24 sm:py-32">
-      <p className="font-display text-sm font-semibold tracking-[0.2em] text-coral-700">404</p>
-      <h1 className="mt-4 max-w-2xl font-display text-4xl font-semibold leading-tight tracking-[-0.03em] sm:text-6xl">
+      <p className="text-sm font-semibold tracking-[0.2em] text-coral-400">404</p>
+      <h1 className="mt-4 max-w-2xl text-4xl font-bold leading-tight tracking-[-0.03em] sm:text-6xl">
         This page took a wrong turn<span className="text-coral-500">.</span>
       </h1>
-      <p className="mt-4 max-w-md text-navy-500">
+      <p className="mt-4 max-w-md text-cream/65">
         The link may be incomplete, or the page no longer exists. The good news is that the network
         is still here.
       </p>

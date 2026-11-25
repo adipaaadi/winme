@@ -39,13 +39,13 @@ const benefits = [
 const lookingFor = [
   'Eight or more years of hands-on operating experience',
   'A clear point of view and the willingness to be honest',
-  'Thirty minutes at a time, with no promises of outcomes',
+  'One session at a time, with no promises of outcomes',
   'Specific topics you genuinely enjoy talking about',
 ];
 
 function FieldError({ children }) {
   return (
-    <p role="alert" className="mt-1.5 flex items-start gap-1.5 text-xs font-medium text-navy">
+    <p role="alert" className="mt-1.5 flex items-start gap-1.5 text-xs font-medium text-cream">
       <span aria-hidden="true" className="mt-1 h-1.5 w-1.5 shrink-0 rounded-full bg-coral-500" />
       {children}
     </p>
@@ -144,11 +144,11 @@ export default function ForExecutives() {
       <div className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-14">
         <div className="animate-fade-up">
           <p className="eyebrow">Place an offer</p>
-          <h1 className="mt-3 max-w-xl font-display text-4xl font-semibold leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
+          <h1 className="mt-3 max-w-xl text-4xl font-bold leading-[1.02] tracking-[-0.03em] sm:text-5xl lg:text-6xl">
             Place your offer
             <span className="text-coral-500">.</span>
           </h1>
-          <p className="mt-5 max-w-xl text-base leading-relaxed text-navy-500">
+          <p className="mt-5 max-w-xl text-base leading-relaxed text-cream/65">
             WinMe connects experienced operators with students, job seekers and founders who have
             specific questions. You bring the perspective. We handle everything around it.
           </p>
@@ -170,10 +170,10 @@ export default function ForExecutives() {
               const Icon = benefit.icon;
               return (
                 <div key={benefit.title} className="flex gap-4 py-5">
-                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-coral-700" />
+                  <Icon className="mt-0.5 h-5 w-5 shrink-0 text-coral-400" />
                   <div>
-                    <h2 className="font-display text-lg font-semibold">{benefit.title}</h2>
-                    <p className="mt-1 text-sm leading-relaxed text-navy-500">
+                    <h2 className="text-lg font-bold">{benefit.title}</h2>
+                    <p className="mt-1 text-sm leading-relaxed text-cream/65">
                       {benefit.description}
                     </p>
                   </div>
@@ -183,21 +183,21 @@ export default function ForExecutives() {
           </div>
 
           <div className="mt-8">
-            <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-400">
+            <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
               What we look for
             </h2>
             <ul className="mt-3 space-y-2.5">
               {lookingFor.map((item) => (
-                <li key={item} className="flex items-start gap-3 text-sm text-navy-500">
-                  <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-700" />
+                <li key={item} className="flex items-start gap-3 text-sm text-cream/65">
+                  <CheckIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-400" />
                   {item}
                 </li>
               ))}
             </ul>
           </div>
 
-          <figure className="mt-10 bg-navy p-6 text-cream sm:p-8">
-            <blockquote className="font-display text-xl font-medium leading-relaxed">
+          <figure className="mt-10 border border-cream/10 bg-navy p-6 text-cream sm:p-8">
+            <blockquote className="text-xl font-medium leading-relaxed">
               “The best calls are the ones where someone arrives with three real questions.”
             </blockquote>
             <figcaption className="mt-3 text-sm text-cream/60">
@@ -215,13 +215,13 @@ export default function ForExecutives() {
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-coral-500 text-navy">
                 <CheckIcon className="h-7 w-7" />
               </span>
-              <h2 className="mt-5 font-display text-2xl font-semibold tracking-[-0.01em]">
+              <h2 className="mt-5 text-2xl font-bold tracking-[-0.01em]">
                 Offer received, {form.name.trim().split(' ')[0]}
               </h2>
-              <p className="mt-3 text-sm leading-relaxed text-navy-500">
+              <p className="mt-3 text-sm leading-relaxed text-cream/65">
                 We will review your offer and reply to {form.email.trim()}.
               </p>
-              <p className="mt-4 rounded-xl bg-cream-100 px-4 py-3 text-xs leading-relaxed text-navy-500">
+              <p className="mt-4 rounded-xl bg-navy-800/60 px-4 py-3 text-xs leading-relaxed text-cream/65">
                 {isDemoMode
                   ? 'Demo mode: this form is simulated and nothing was sent.'
                   : 'Your details are only used to review your offer on WinMe.'}
@@ -233,10 +233,10 @@ export default function ForExecutives() {
           ) : (
             <div className="space-y-4">
               <form onSubmit={handleSubmit} noValidate className="card p-6 sm:p-8">
-                <h2 className="font-display text-2xl font-semibold tracking-[-0.02em]">
+                <h2 className="text-2xl font-bold tracking-[-0.02em]">
                   Place your offer
                 </h2>
-                <p className="mt-2 text-sm leading-relaxed text-navy-500">
+                <p className="mt-2 text-sm leading-relaxed text-cream/65">
                   Tell us about your work. If there is a fit, we will set up a short intro call.
                 </p>
 
@@ -341,8 +341,8 @@ export default function ForExecutives() {
                       placeholder="For example: a mock interview for product roles, or a pitch review for first-time founders."
                       className="field resize-y"
                     />
-                    <p className="mt-1.5 text-xs leading-relaxed text-navy-500">
-                      Optional. One job you can talk someone through in thirty minutes.
+                    <p className="mt-1.5 text-xs leading-relaxed text-cream/65">
+                      Optional. One job you can talk someone through in a single session.
                     </p>
                   </div>
                 </div>
@@ -350,9 +350,9 @@ export default function ForExecutives() {
                 {apiError ? (
                   <div
                     role="alert"
-                    className="mt-5 flex items-start gap-2.5 rounded-xl border border-coral-300 bg-coral-50 p-3.5 text-sm text-navy"
+                    className="mt-5 flex items-start gap-2.5 rounded-xl border border-coral-500/40 bg-coral-500/10 p-3.5 text-sm text-cream"
                   >
-                    <AlertIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-700" />
+                    <AlertIcon className="mt-0.5 h-4 w-4 shrink-0 text-coral-400" />
                     <p>{apiError}</p>
                   </div>
                 ) : null}
@@ -371,7 +371,7 @@ export default function ForExecutives() {
                   )}
                 </button>
 
-                <p className="mt-3 text-center text-[11px] leading-relaxed text-navy-500">
+                <p className="mt-3 text-center text-[11px] leading-relaxed text-cream/65">
                   {isDemoMode
                     ? 'Demo mode: submissions are simulated and not sent anywhere.'
                     : 'We only use these details to review your offer. No mailing list.'}
@@ -379,7 +379,7 @@ export default function ForExecutives() {
               </form>
 
               <div className="card p-6">
-                <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-400">
+                <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
                   What happens next
                 </h2>
                 <ol className="mt-4 space-y-3">
@@ -398,12 +398,12 @@ export default function ForExecutives() {
                     ],
                   ].map(([title, text], index) => (
                     <li key={title} className="flex gap-3">
-                      <span className="font-display text-sm font-semibold tabular-nums text-coral-700">
+                      <span className="text-sm font-semibold tabular-nums text-coral-400">
                         0{index + 1}
                       </span>
                       <div>
                         <p className="text-sm font-medium">{title}</p>
-                        <p className="mt-0.5 text-xs leading-relaxed text-navy-500">{text}</p>
+                        <p className="mt-0.5 text-xs leading-relaxed text-cream/65">{text}</p>
                       </div>
                     </li>
                   ))}

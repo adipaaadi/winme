@@ -3,23 +3,23 @@ import Logo from './Logo';
 
 export default function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-cream/10 bg-navy text-cream">
+    <footer className="relative z-10 mt-24 border-t border-cream/10 bg-navy text-cream">
       <div className="container-page py-14">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream/70">
-              Thirty minutes with the people who have done it. Advice calls with experienced
+              Focused sessions with the people who have done it. Advice from experienced
               operators, booked around your schedule.
             </p>
-            <p className="mt-4 max-w-sm text-xs leading-relaxed text-cream/50">
+            <p className="mt-4 max-w-sm text-xs leading-relaxed text-cream/60">
               WinMe is a pitch-event prototype. Every executive, company and review is fictional,
               and payments are simulated.
             </p>
           </div>
 
           <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/50">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/60">
               Explore
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-cream/75">
@@ -47,11 +47,11 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/50">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/60">
               Good to know
             </h3>
             <ul className="mt-4 space-y-3 text-sm text-cream/75">
-              <li>30-minute calls</li>
+              <li>Focused working sessions</li>
               <li>Advice only, no guarantees</li>
               <li>Full refund if an exec no-shows</li>
               <li>Ten demo profiles</li>
@@ -59,7 +59,7 @@ export default function SiteFooter() {
           </div>
 
           <div>
-            <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/50">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.18em] text-cream/60">
               Access
             </h3>
             <p className="mt-4 text-sm leading-relaxed text-cream/75">
@@ -75,7 +75,7 @@ export default function SiteFooter() {
           </div>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-cream/15 pt-6 text-xs text-cream/50 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-cream/15 pt-6 text-xs text-cream/60 sm:flex-row sm:items-center sm:justify-between">
           <p>© {new Date().getFullYear()} WinMe. A concept prototype.</p>
           <p>Sessions are advice only. No outcomes are guaranteed.</p>
         </div>

@@ -22,45 +22,45 @@ function BookingRow({ booking }) {
         upcoming ? 'border-l-2 border-l-coral-500' : ''
       }`}
     >
-      <div className="flex w-16 shrink-0 flex-col items-center rounded-xl bg-cream-100 px-2 py-2">
-        <span className="text-[10px] font-semibold uppercase tracking-wide text-navy-500">
+      <div className="flex w-16 shrink-0 flex-col items-center rounded-xl bg-navy-800/60 px-2 py-2">
+        <span className="text-[10px] font-semibold uppercase tracking-wide text-cream/65">
           {start.toFormat('ccc')}
         </span>
-        <span className="font-display text-xl font-semibold leading-tight">{start.toFormat('d')}</span>
-        <span className="text-[10px] uppercase tracking-wide text-navy-500">
+        <span className="text-xl font-bold leading-tight">{start.toFormat('d')}</span>
+        <span className="text-[10px] uppercase tracking-wide text-cream/65">
           {start.toFormat('LLL')}
         </span>
       </div>
 
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-center gap-2">
-          <p className="font-display text-lg font-semibold leading-tight">
+          <p className="text-lg font-bold leading-tight">
             {exec ? exec.name : booking.execName}
           </p>
           {booking.demo ? <DemoBadge /> : null}
           <span
             className={`rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wide ${
-              upcoming ? 'bg-coral-100 text-navy' : 'bg-navy/[0.06] text-navy-500'
+              upcoming ? 'bg-coral-500/15 text-cream' : 'bg-cream/[0.08] text-cream/65'
             }`}
           >
             {upcoming ? 'Upcoming' : 'Completed'}
           </span>
         </div>
-        <p className="mt-0.5 text-sm text-navy-500">
+        <p className="mt-0.5 text-sm text-cream/65">
           {exec ? `${exec.title} · ${exec.company}` : 'WinMe operator'}
         </p>
-        <p className="mt-1 text-xs font-medium text-navy">
+        <p className="mt-1 text-xs font-medium text-cream">
           {booking.serviceName || GENERAL_ADVICE}
         </p>
-        <p className="mt-2 flex items-center gap-1.5 text-sm text-navy-500">
-          <CalendarIcon className="h-4 w-4 text-coral-700" />
+        <p className="mt-2 flex items-center gap-1.5 text-sm text-cream/65">
+          <CalendarIcon className="h-4 w-4 text-coral-400" />
           {formatSlotLong(booking.slot)}
         </p>
       </div>
 
       <div className="flex items-center justify-between gap-4 border-t border-line pt-3 sm:border-0 sm:pt-0">
         <span className="text-sm font-semibold">€{booking.price}</span>
-        <span className="inline-flex items-center gap-1.5 text-sm font-medium text-navy transition-colors group-hover:text-coral-700">
+        <span className="inline-flex items-center gap-1.5 text-sm font-medium text-cream transition-colors group-hover:text-coral-400">
           Details
           <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </span>
@@ -114,10 +114,10 @@ export default function MyBookings() {
     <div className="container-page max-w-4xl py-10 sm:py-14">
       <div className="animate-fade-up">
         <p className="eyebrow">My bookings</p>
-        <h1 className="mt-3 font-display text-4xl font-semibold tracking-[-0.03em] sm:text-5xl">
+        <h1 className="mt-3 text-4xl font-bold tracking-[-0.03em] sm:text-5xl">
           Your conversations
         </h1>
-        <p className="mt-4 max-w-2xl text-navy-500">
+        <p className="mt-4 max-w-2xl text-cream/65">
           Everything you have booked from this browser. Bookings are stored locally, so clearing
           site data or switching devices will remove them from this list.
         </p>
@@ -136,7 +136,7 @@ export default function MyBookings() {
         <div className="mt-8 space-y-10">
           {upcoming.length > 0 ? (
             <section>
-              <h2 className="border-b border-navy/15 pb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-400">
+              <h2 className="border-b border-cream/15 pb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
                 Upcoming
               </h2>
               <div className="mt-4 space-y-3">
@@ -149,7 +149,7 @@ export default function MyBookings() {
 
           {past.length > 0 ? (
             <section>
-              <h2 className="border-b border-navy/15 pb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-400">
+              <h2 className="border-b border-cream/15 pb-2 text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
                 Past
               </h2>
               <div className="mt-4 space-y-3">
@@ -167,12 +167,12 @@ export default function MyBookings() {
           role="alertdialog"
           aria-labelledby="clear-bookings-title"
           aria-describedby="clear-bookings-description"
-          className="mt-10 rounded-2xl border border-coral-300 bg-coral-50 p-5"
+          className="mt-10 rounded-2xl border border-coral-500/40 bg-coral-500/10 p-5"
         >
-          <p id="clear-bookings-title" className="font-display text-lg font-semibold">
+          <p id="clear-bookings-title" className="text-lg font-bold">
             Clear bookings from this browser?
           </p>
-          <p id="clear-bookings-description" className="mt-1.5 text-sm leading-relaxed text-navy-500">
+          <p id="clear-bookings-description" className="mt-1.5 text-sm leading-relaxed text-cream/65">
             This removes all {bookings.length} booking{bookings.length === 1 ? '' : 's'} saved
             here, including meeting links and calendar files. It cannot be undone.
           </p>
@@ -187,7 +187,7 @@ export default function MyBookings() {
         </div>
       ) : null}
 
-      <div className="mt-10 flex flex-col gap-3 border-y border-line py-5 text-sm text-navy-500 sm:flex-row sm:items-center sm:justify-between">
+      <div className="mt-10 flex flex-col gap-3 border-y border-line py-5 text-sm text-cream/65 sm:flex-row sm:items-center sm:justify-between">
         <p>Bookings are stored in this browser only. No account required.</p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-2">
           {bookings.length > 0 ? (
@@ -195,14 +195,14 @@ export default function MyBookings() {
               ref={triggerRef}
               type="button"
               onClick={() => setConfirming(true)}
-              className="font-semibold text-navy underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
+              className="font-semibold text-cream underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
             >
               Clear bookings from this browser
             </button>
           ) : null}
           <Link
             to="/executives"
-            className="font-semibold text-navy underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
+            className="font-semibold text-cream underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
           >
             Book a meeting
           </Link>

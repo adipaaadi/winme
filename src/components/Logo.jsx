@@ -4,7 +4,7 @@ export default function Logo({ className = '' }) {
   return (
     <span
       translate="no"
-      className={`inline-flex items-baseline font-display text-[1.65rem] font-semibold leading-none tracking-[-0.035em] ${className}`}
+      className={`inline-flex items-baseline text-[1.65rem] font-bold leading-none tracking-[-0.035em] ${className}`}
     >
       WinMe<span className="text-coral-500">.</span>
     </span>

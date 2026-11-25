@@ -23,7 +23,7 @@ export default function Avatar({
   return (
     <div
       aria-hidden="true"
-      className={`flex shrink-0 select-none items-center justify-center rounded-full bg-gradient-to-br font-display font-semibold tracking-wide text-cream ring-1 ring-inset ring-cream/20 ${gradient} ${sizes[size]} ${className}`}
+      className={`flex shrink-0 select-none items-center justify-center rounded-full bg-gradient-to-br font-semibold tracking-wide text-cream ring-1 ring-inset ring-cream/20 ${gradient} ${sizes[size]} ${className}`}
     >
       <span className="drop-shadow-sm">{initials(name)}</span>
     </div>

@@ -113,12 +113,12 @@ export default function Browse() {
     <div className="container-page py-10 sm:py-14">
       <div className="max-w-2xl animate-fade-up">
         <p className="eyebrow">The network</p>
-        <h1 className="mt-3 font-display text-3xl font-semibold tracking-[-0.02em] sm:text-5xl">
+        <h1 className="mt-3 text-3xl font-bold tracking-[-0.02em] sm:text-5xl">
           Find someone who has been there
         </h1>
-        <p className="mt-5 text-navy-500">
-          Ten operators across engineering, product, AI, hiring and founding. Every call is 30
-          minutes, and every session is advice only.
+        <p className="mt-5 text-cream/65">
+          Ten operators across engineering, product, AI, hiring and founding. Book a focused working
+          session with any of them — advice only, no guaranteed outcomes.
         </p>
       </div>
 
@@ -129,7 +129,7 @@ export default function Browse() {
               Search operators
             </label>
             <div className="relative">
-              <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-400" />
+              <SearchIcon className="pointer-events-none absolute left-4 top-1/2 h-4 w-4 -translate-y-1/2 text-cream/55" />
               <input
                 id="executive-search"
                 type="search"
@@ -142,7 +142,7 @@ export default function Browse() {
           </div>
 
           <div className="mt-8">
-            <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-navy-400">
+            <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
               Filter by topic
             </h2>
             <div className="mt-3 border-t border-line">
@@ -156,21 +156,21 @@ export default function Browse() {
                     onClick={() => toggleFilter(filter)}
                     aria-pressed={active}
                     className={`flex w-full items-center justify-between gap-3 border-b border-line py-2.5 text-left text-sm transition-colors ${
-                      active ? 'font-semibold text-navy' : 'text-navy-500 hover:text-navy'
+                      active ? 'font-semibold text-cream' : 'text-cream/65 hover:text-cream'
                     }`}
                   >
                     <span className="flex items-center gap-2.5">
                       <span
                         aria-hidden="true"
                         className={`flex h-3.5 w-3.5 items-center justify-center rounded-[3px] border transition-colors ${
-                          active ? 'border-coral-500 bg-coral-500' : 'border-navy/25'
+                          active ? 'border-coral-500 bg-coral-500' : 'border-cream/25'
                         }`}
                       >
                         {active ? <CheckIcon className="h-3 w-3 text-navy" /> : null}
                       </span>
                       {filter}
                     </span>
-                    <span className="text-xs tabular-nums text-navy-400">{count}</span>
+                    <span className="text-xs tabular-nums text-cream/55">{count}</span>
                   </button>
                 );
               })}
@@ -180,7 +180,7 @@ export default function Browse() {
               <button
                 type="button"
                 onClick={clearFilters}
-                className="mt-4 text-xs font-semibold text-navy underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
+                className="mt-4 text-xs font-semibold text-cream underline decoration-coral-400 decoration-1 underline-offset-4 hover:decoration-2"
               >
                 Clear search and filters
               </button>
@@ -189,15 +189,15 @@ export default function Browse() {
         </aside>
 
         <div>
-          <div className="flex flex-col gap-3 border-b border-navy/15 pb-4 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-sm text-navy-500" aria-live="polite">
-              <span className="font-semibold text-navy">{results.length}</span>{' '}
+          <div className="flex flex-col gap-3 border-b border-cream/15 pb-4 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-sm text-cream/65" aria-live="polite">
+              <span className="font-semibold text-cream">{results.length}</span>{' '}
               {results.length === 1 ? 'operator' : 'operators'}
               {hasFilters ? ' match your filters' : ' in the network'}
             </p>
 
             <div className="flex items-center gap-2">
-              <label htmlFor="sort" className="text-xs uppercase tracking-[0.12em] text-navy-400">
+              <label htmlFor="sort" className="text-xs uppercase tracking-[0.12em] text-cream/55">
                 Sort
               </label>
               <div className="relative">
@@ -205,7 +205,7 @@ export default function Browse() {
                   id="sort"
                   value={sort}
                   onChange={(event) => setSort(event.target.value)}
-                  className="appearance-none rounded-full border border-line bg-cream-50 py-2 pl-3 pr-9 text-sm font-medium text-navy transition focus:border-navy focus:outline-none focus:ring-2 focus:ring-navy/15"
+                  className="appearance-none rounded-full border border-line bg-navy-900 py-2 pl-3 pr-9 text-sm font-medium text-cream transition focus:border-coral-400 focus:outline-none focus:ring-2 focus:ring-coral-400/25"
                 >
                   {sortOptions.map((option) => (
                     <option key={option.value} value={option.value}>
@@ -213,7 +213,7 @@ export default function Browse() {
                     </option>
                   ))}
                 </select>
-                <ChevronDownIcon className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-navy-500" />
+                <ChevronDownIcon className="pointer-events-none absolute right-3 top-1/2 h-4 w-4 -translate-y-1/2 text-cream/65" />
               </div>
             </div>
           </div>
@@ -231,11 +231,11 @@ export default function Browse() {
             </div>
           ) : (
             <div className="mt-6 border-y border-line py-16 text-center">
-              <SearchIcon className="mx-auto h-6 w-6 text-coral-700" />
-              <h2 className="mt-4 font-display text-2xl font-semibold tracking-[-0.01em]">
+              <SearchIcon className="mx-auto h-6 w-6 text-coral-400" />
+              <h2 className="mt-4 text-2xl font-bold tracking-[-0.01em]">
                 No matches yet
               </h2>
-              <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-navy-500">
+              <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-cream/65">
                 Try a broader search, or remove a filter or two. You can also clear everything and
                 scan the topics.
               </p>
