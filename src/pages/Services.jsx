@@ -3,6 +3,7 @@ import { getExecutive } from '../data/executives';
 import { services } from '../data/services';
 import usePageTitle from '../lib/usePageTitle';
 import Avatar from '../components/Avatar';
+import { SpotlightCard } from '../components/ui/spotlight-card';
 import { ArrowRightIcon } from '../components/icons';
 
 export default function Services() {
@@ -38,7 +39,8 @@ export default function Services() {
 
       <div className="mt-11 grid grid-cols-1 gap-5 md:grid-cols-2">
         {services.map((service) => (
-          <section
+          <SpotlightCard
+            as="section"
             key={service.id}
             id={service.id}
             className="card flex flex-col p-6 sm:p-7"
@@ -84,10 +86,13 @@ export default function Services() {
                 })}
               </ul>
             </div>
-          </section>
+          </SpotlightCard>
         ))}
 
-        <section className="card flex flex-col justify-between gap-6 border-navy/10 bg-cream p-6 text-navy sm:p-7 md:col-span-2 md:flex-row md:items-center">
+        <SpotlightCard
+          as="section"
+          className="card flex flex-col justify-between gap-6 border-navy/10 bg-cream p-6 text-navy sm:p-7 md:col-span-2 md:flex-row md:items-center"
+        >
           <div>
             <h2 className="text-2xl font-bold tracking-[-0.01em]">
               Have a service of your own?
@@ -101,7 +106,7 @@ export default function Services() {
             Place your offer
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
-        </section>
+        </SpotlightCard>
       </div>
 
       <p className="mt-8 max-w-2xl text-xs leading-relaxed text-cream/65">

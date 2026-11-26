@@ -136,6 +136,63 @@
   .no-scrollbar::-webkit-scrollbar {
     display: none;
   }
+
+  .spotlight-card {
+    position: relative;
+    isolation: isolate;
+  }
+
+  /* only pointer devices get the glow; touch keeps normal scrolling and no decoration */
+  @media (hover: hover) and (pointer: fine) {
+    .spotlight-card::before,
+    .spotlight-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    .spotlight-card::before {
+      z-index: -1;
+      background: radial-gradient(
+        360px circle at var(--mx, 50%) var(--my, 50%),
+        hsl(var(--spot-hue, 14) 100% 68% / 0.16),
+        hsl(var(--spot-hue, 14) 100% 68% / 0.05) 48%,
+        transparent 74%
+      );
+    }
+
+    .spotlight-card::after {
+      z-index: 1;
+      padding: 1px;
+      background:
+        radial-gradient(
+          300px circle at var(--mx, 50%) var(--my, 50%),
+          hsl(var(--spot-hue, 14) 100% 80% / 0.9),
+          transparent 68%
+        ),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.02));
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+      mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      mask-composite: exclude;
+    }
+
+    .spotlight-card[data-spotlight-variant='border']::before {
+      display: none;
+    }
+
+    .spotlight-card[data-spotlight='on']::before,
+    .spotlight-card[data-spotlight='on']::after,
+    .spotlight-card:focus-visible::before,
+    .spotlight-card:focus-visible::after,
+    .spotlight-card:focus-within::before,
+    .spotlight-card:focus-within::after {
+      opacity: 1;
+    }
+  }
 }
 
 @keyframes zoom-out {

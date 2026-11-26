@@ -9,6 +9,7 @@ import usePageTitle from '../lib/usePageTitle';
 import Avatar from '../components/Avatar';
 import DemoBadge from '../components/DemoBadge';
 import EmptyState from '../components/EmptyState';
+import { SpotlightCard } from '../components/ui/spotlight-card';
 import {
   AlertIcon,
   CalendarIcon,
@@ -86,7 +87,7 @@ export default function Confirmed() {
 
       <div className="mt-10 grid gap-6 lg:grid-cols-[minmax(0,1fr)_350px] lg:items-start">
         <div className="space-y-6">
-          <section className="card p-6 sm:p-8">
+          <SpotlightCard as="section" variant="border" className="card p-6 sm:p-8">
             <div className="flex items-center justify-between gap-3 border-b border-line pb-4">
               <h2 className="text-2xl font-bold tracking-[-0.01em]">Your call</h2>
               <span className="rounded-full bg-coral-500/15 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.14em] text-cream">
@@ -147,9 +148,9 @@ export default function Confirmed() {
               Add to calendar downloads an .ics file that works with Google Calendar, Apple Calendar
               and Outlook.
             </p>
-          </section>
+          </SpotlightCard>
 
-          <section className="card p-6 sm:p-8">
+          <SpotlightCard as="section" variant="border" className="card p-6 sm:p-8">
             <div className="flex flex-wrap items-center gap-2">
               <VideoIcon className="h-5 w-5 text-coral-400" />
               <h2 className="text-2xl font-bold tracking-[-0.01em]">
@@ -193,7 +194,7 @@ export default function Confirmed() {
                 Your meeting link will arrive with your calendar invitation.
               </p>
             )}
-          </section>
+          </SpotlightCard>
 
           <section>
             <div className="flex items-start gap-3 border-l-2 border-coral-500 pl-5">
@@ -211,7 +212,7 @@ export default function Confirmed() {
         </div>
 
         <div className="space-y-6">
-          <section className="card p-6">
+          <SpotlightCard as="section" variant="border" className="card p-6">
             <h2 className="text-xl font-bold tracking-[-0.01em]">
               What to prepare
             </h2>
@@ -235,9 +236,9 @@ export default function Confirmed() {
                 </li>
               ))}
             </ul>
-          </section>
+          </SpotlightCard>
 
-          <section className="card p-6">
+          <SpotlightCard as="section" variant="border" className="card p-6">
             <h2 className="text-xl font-bold tracking-[-0.01em]">
               Booking details
             </h2>
@@ -267,7 +268,7 @@ export default function Confirmed() {
                 <dd className="font-semibold">€{booking.price}</dd>
               </div>
             </dl>
-          </section>
+          </SpotlightCard>
         </div>
       </div>
     </div>

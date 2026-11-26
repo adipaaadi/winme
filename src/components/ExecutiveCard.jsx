@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { DateTime } from 'luxon';
 import Avatar from './Avatar';
 import Rating from './Rating';
+import { SpotlightCard } from './ui/spotlight-card';
 import { ArrowRightIcon } from './icons';
 
 export default function ExecutiveCard({ exec, index, nextSlot }) {
@@ -9,7 +10,8 @@ export default function ExecutiveCard({ exec, index, nextSlot }) {
   const next = nextSlot ? DateTime.fromISO(nextSlot).toLocal() : null;
 
   return (
-    <Link
+    <SpotlightCard
+      as={Link}
       to={`/executives/${exec.id}`}
       className="group flex h-full flex-col rounded-[20px] border border-line bg-navy-900 p-6 transition duration-200 hover:-translate-y-1 hover:border-cream/30 hover:shadow-lift"
     >
@@ -62,6 +64,6 @@ export default function ExecutiveCard({ exec, index, nextSlot }) {
           <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </span>
       </div>
-    </Link>
+    </SpotlightCard>
   );
 }

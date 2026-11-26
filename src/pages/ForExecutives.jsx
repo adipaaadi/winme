@@ -12,6 +12,7 @@ import {
   UsersIcon,
 } from '../components/icons';
 import Spinner from '../components/Spinner';
+import { SpotlightCard } from '../components/ui/spotlight-card';
 
 const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -196,14 +197,17 @@ export default function ForExecutives() {
             </ul>
           </div>
 
-          <figure className="mt-10 border border-cream/10 bg-navy p-6 text-cream sm:p-8">
+          <SpotlightCard
+            as="figure"
+            className="mt-10 border border-cream/10 bg-navy p-6 text-cream sm:p-8"
+          >
             <blockquote className="text-xl font-medium leading-relaxed">
               “The best calls are the ones where someone arrives with three real questions.”
             </blockquote>
             <figcaption className="mt-3 text-sm text-cream/60">
               Tomas Lehtinen · Founder, Kide
             </figcaption>
-          </figure>
+          </SpotlightCard>
         </div>
 
         <aside
@@ -211,7 +215,7 @@ export default function ForExecutives() {
           className="animate-fade-up scroll-mt-28 lg:sticky lg:top-28 [animation-delay:100ms]"
         >
           {submitted ? (
-            <div className="card p-7 text-center sm:p-9">
+            <SpotlightCard className="card p-7 text-center sm:p-9">
               <span className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-coral-500 text-navy">
                 <CheckIcon className="h-7 w-7" />
               </span>
@@ -229,10 +233,16 @@ export default function ForExecutives() {
               <Link to="/" className="btn-secondary mt-6">
                 Back to home
               </Link>
-            </div>
+            </SpotlightCard>
           ) : (
             <div className="space-y-4">
-              <form onSubmit={handleSubmit} noValidate className="card p-6 sm:p-8">
+              <SpotlightCard
+                as="form"
+                variant="border"
+                onSubmit={handleSubmit}
+                noValidate
+                className="card p-6 sm:p-8"
+              >
                 <h2 className="text-2xl font-bold tracking-[-0.02em]">
                   Place your offer
                 </h2>
@@ -376,9 +386,9 @@ export default function ForExecutives() {
                     ? 'Demo mode: submissions are simulated and not sent anywhere.'
                     : 'We only use these details to review your offer. No mailing list.'}
                 </p>
-              </form>
+              </SpotlightCard>
 
-              <div className="card p-6">
+              <SpotlightCard className="card p-6">
                 <h2 className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
                   What happens next
                 </h2>
@@ -408,7 +418,7 @@ export default function ForExecutives() {
                     </li>
                   ))}
                 </ol>
-              </div>
+              </SpotlightCard>
             </div>
           )}
         </aside>

@@ -1,12 +1,14 @@
 import { Link } from 'react-router-dom';
 import { DateTime } from 'luxon';
 import Avatar from './Avatar';
+import { SpotlightCard } from './ui/spotlight-card';
 
 export default function GlobeProfileCard({ exec, nextSlot, className = '' }) {
   const next = nextSlot ? DateTime.fromISO(nextSlot).toLocal() : null;
 
   return (
-    <Link
+    <SpotlightCard
+      as={Link}
       to={`/executives/${exec.id}`}
       className={`pointer-events-auto block w-56 rounded-2xl border border-cream/15 bg-navy-800 p-3 shadow-soft transition-colors hover:border-cream/30 hover:bg-navy-700 sm:w-60 ${className}`}
     >
@@ -32,6 +34,6 @@ export default function GlobeProfileCard({ exec, nextSlot, className = '' }) {
             ? `Next free ${next.toFormat('ccc d LLL')} · ${next.toFormat('HH:mm')}`
             : 'No times in the next 14 days'}
       </p>
-    </Link>
+    </SpotlightCard>
   );
 }

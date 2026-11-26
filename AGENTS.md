@@ -28,7 +28,8 @@ src/
   main.jsx                React root
   index.css               Tailwind layers, base styles, .btn-* / .card / .field / .eyebrow / .nav-link
   components/             Layout, SiteHeader, SiteFooter, Logo, Avatar, Rating, DemoBadge,
-                          ExecutiveCard, FAQ, EmptyState, Spinner, icons
+                          ExecutiveCard, FAQ, EmptyState, Spinner, Reveal, ZoomText, icons
+  components/ui/          SpotlightCard
   pages/                  Home, Services, Browse, ExecutiveProfile, Booking, Confirmed,
                           MyBookings, ForExecutives, NotFound
   data/executives.js      The ten fictional profiles, topic list, getExecutive()
@@ -44,6 +45,10 @@ apps-script/Code.gs       Sheet + Calendar backend, deployed as a web app
 apps-script/appsscript.json
 index.html, tailwind.config.js, vite.config.js, .env.example
 ```
+
+## Cards
+
+New card surfaces — a rounded panel with padding and a border or background — use `<SpotlightCard>` from `src/components/ui/spotlight-card.jsx` rather than a bare `div` or `Link`. Pass `as={Link}` (or `as="section"`, `as="form"`) to keep the element, `className` with the classes the card already had, and `variant="full"` for content cards or `variant="border"` for panels holding inputs or long text. The component only adds decorative layers on top: never move the card's background, border, radius or padding into it.
 
 ## Code style
 

@@ -1,6 +1,6 @@
 # PROJECT_STATE
 
-State of WinMe on **2026-11-25**, written from source.
+State of WinMe on **2026-11-26**, written from source.
 
 React SPA on Vite base `/winme/` under `HashRouter`. Demo-first: with no environment URL the app makes no booking requests. Ten fictional operators and seven fixed-price services.
 
@@ -55,6 +55,19 @@ The orthographic camera frames a unit globe in a square canvas. The group tilts 
 `src/components/ZoomText.jsx` splits the headline into word wrappers (inline-block, nowrap) and per-character spans. Every character runs the `zoom-out` keyframes in `src/index.css` for 0.5 s with `both` fill; the delay is `STAGGER` (0.04 s) times its position across the sentence, spaces included. It runs once. The h1 carries the full sentence as `aria-label` and the animated spans are `aria-hidden`; with reduced motion the characters render immediately with no animation.
 
 `src/components/GlobeProfileCard.jsx` renders two `Link` cards anchored in percentages to the globe frame: Priya Raghavan (Asia/Kolkata) at the upper left and Tomas Lehtinen (Europe/Helsinki) at the lower right. Each shows the avatar, name, title and company, a coral price pill, and, from `sm` up, the next free slot in the visitor's local zone. The second card is hidden below 640 px. A slow 8 s / 11 s float is disabled under reduced motion.
+
+## Spotlight cards
+
+`src/components/ui/spotlight-card.jsx` exports `SpotlightCard` (default and named). It is a polymorphic wrapper (`as`, default `div`) that adds one class and `data-spotlight-variant`, merges `className` and forwards the ref and every other prop, so `as={Link}` stays a real anchor and a bare `onClick` still fires. It sets no size, padding, background, border or radius: the effect is drawn by `.spotlight-card::before` (the fill, at `z-index: -1` inside the card's own `isolation: isolate` context, so it sits above the card background and below its content) and `.spotlight-card::after` (a 1px masked ring plus a faint white inner highlight, `border-radius: inherit`). Cards keep their own radius, gradient and shadow utilities.
+
+One module-level listener serves every card. Registering the first card adds the shared `pointermove` handler plus `scroll` and window `blur` / document `pointerleave`; unregistering the last one removes them and clears its frame. Paints are throttled with `requestAnimationFrame`, and cards more than 380 px outside the viewport are skipped. Coordinates are local to each card (`--mx`, `--my` from `getBoundingClientRect()`), so the glow tracks correctly inside hover-lift transforms, the floating globe cards and sticky panels; `--spot-hue` is the colour base plus the pointer's horizontal ratio times its spread. The fill radius (360 px) is wider than a card, so neighbours still light up. With no pointer data every glow layer stays at `opacity: 0`; `:focus-visible` / `:focus-within` shows a static glow for keyboard users. The whole effect lives in `@media (hover: hover) and (pointer: fine)`, so touch devices get no glow and keep normal scrolling, and it uses no transitions, so reduced motion needs no extra case.
+
+`glowColor` picks a hue base and spread: `coral` (14 / 30, the default, warm coral to amber), `blue`, `purple`, `green`, `red`, `orange`.
+
+- **`variant="full"`** — background spotlight plus border ring: Browse and Home operator cards (`ExecutiveCard`), the Home services teaser cards, the seven Services cards and the "Have a service of your own?" card, both `GlobeProfileCard`s, MyBookings booking rows, the Booking demo credit card, the ForExecutives quote card, success card and "What happens next" card, and `EmptyState`.
+- **`variant="border"`** — ring only, for panels that hold inputs or long text: the ExecutiveProfile availability and booking panel, the Booking details form, payment panel and order summary, the four Confirmed panels, the ForExecutives offer form and the FAQ panel.
+
+Left alone: buttons, chips, filter rows, inputs, the sort select, the header, footer, banner, full-width section bands and the globe canvas. The profile's borderless sections (header, about, services, questions), the Home trust items, the three step rows and the closing CTA row are not card surfaces, so they carry no spotlight.
 
 ## Data model
 
@@ -138,3 +151,4 @@ One key: `winme.bookings.v1`, a JSON array newest-first. `saveBooking` replaces 
 - 2026-11-25 — Removed the next-free slot chip under the Home hero CTA and its now-unused label helpers and Luxon import.
 - 2026-11-25 — Swapped the first two header nav links so "The network" precedes "Services" in both the desktop bar and the mobile menu.
 - 2026-11-25 — Rewrote every 30-minute phrase in the JSX copy to a session-based system (working/focused session, "per session" pricing) across Home, Services, Browse, ExecutiveProfile, ExecutiveCard, Booking, Confirmed, ForExecutives and the footer; slot and duration logic untouched.
+- 2026-11-26 — Added `SpotlightCard` (`src/components/ui/spotlight-card.jsx`): a single ref-counted pointer listener, per-card local coordinates, coral-to-amber hue drift, `full` and `border` variants and pointer-gated CSS with a focus-visible fallback; applied to every card surface without touching layout, backgrounds, radii or routing.

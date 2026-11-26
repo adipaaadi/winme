@@ -8,6 +8,7 @@ import { formatSlotLong } from '../lib/slots';
 import usePageTitle from '../lib/usePageTitle';
 import DemoBadge from '../components/DemoBadge';
 import EmptyState from '../components/EmptyState';
+import { SpotlightCard } from '../components/ui/spotlight-card';
 import { ArrowRightIcon, CalendarIcon } from '../components/icons';
 
 function BookingRow({ booking }) {
@@ -16,7 +17,8 @@ function BookingRow({ booking }) {
   const upcoming = start.plus({ minutes: 30 }) > DateTime.now();
 
   return (
-    <Link
+    <SpotlightCard
+      as={Link}
       to={`/confirmed/${booking.id}`}
       className={`card group flex flex-col gap-4 p-5 transition duration-200 hover:-translate-y-0.5 hover:shadow-lift sm:flex-row sm:items-center ${
         upcoming ? 'border-l-2 border-l-coral-500' : ''
@@ -65,7 +67,7 @@ function BookingRow({ booking }) {
           <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
         </span>
       </div>
-    </Link>
+    </SpotlightCard>
   );
 }
 

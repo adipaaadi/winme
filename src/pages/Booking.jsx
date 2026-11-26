@@ -10,6 +10,7 @@ import usePageTitle from '../lib/usePageTitle';
 import Avatar from '../components/Avatar';
 import EmptyState from '../components/EmptyState';
 import Spinner from '../components/Spinner';
+import { SpotlightCard } from '../components/ui/spotlight-card';
 import {
   AlertIcon,
   ArrowLeftIcon,
@@ -249,7 +250,13 @@ export default function Booking() {
       <div className="mt-8 grid gap-6 lg:grid-cols-[minmax(0,1fr)_330px] lg:items-start">
         <div>
           {step === 'details' ? (
-            <form onSubmit={handleContinue} noValidate className="card animate-fade-up p-6 sm:p-8">
+            <SpotlightCard
+              as="form"
+              variant="border"
+              onSubmit={handleContinue}
+              noValidate
+              className="card animate-fade-up p-6 sm:p-8"
+            >
               <div>
                 <h2 className="text-2xl font-bold tracking-[-0.01em]">
                   Your details
@@ -439,7 +446,7 @@ export default function Booking() {
               <button type="submit" className="btn-primary mt-6 w-full sm:w-auto">
                 Continue to payment
               </button>
-            </form>
+            </SpotlightCard>
           ) : (
             <div className="space-y-5">
               <button
@@ -452,7 +459,7 @@ export default function Booking() {
                 Back to details
               </button>
 
-              <div className="card animate-fade-up p-6 sm:p-8">
+              <SpotlightCard variant="border" className="card animate-fade-up p-6 sm:p-8">
                 <h2
                   ref={paymentHeadingRef}
                   tabIndex={-1}
@@ -471,7 +478,7 @@ export default function Booking() {
                   </div>
                 </div>
 
-                <div className="mt-6 rounded-2xl border border-cream/10 bg-gradient-to-br from-navy-900 to-navy-700 p-5 text-cream shadow-lift sm:p-6">
+                <SpotlightCard className="mt-6 rounded-2xl border border-cream/10 bg-gradient-to-br from-navy-900 to-navy-700 p-5 text-cream shadow-lift sm:p-6">
                   <div className="flex items-start justify-between">
                     <div className="h-7 w-10 rounded-md bg-gradient-to-br from-coral-400 to-coral-600" />
                     <CreditCardIcon className="h-6 w-6 text-cream/60" />
@@ -483,7 +490,7 @@ export default function Booking() {
                     <span>WinMe demo card</span>
                     <span>12 / 30</span>
                   </div>
-                </div>
+                </SpotlightCard>
 
                 <dl className="mt-6 space-y-2 border-t border-line pt-5 text-sm">
                   <div className="flex justify-between gap-4">
@@ -528,13 +535,13 @@ export default function Booking() {
                   <ShieldIcon className="h-3.5 w-3.5" />
                   Simulated checkout · no real payment · advice only
                 </p>
-              </div>
+              </SpotlightCard>
             </div>
           )}
         </div>
 
         <aside className="animate-fade-up [animation-delay:100ms]">
-          <div className="card p-6 lg:sticky lg:top-28">
+          <SpotlightCard variant="border" className="card p-6 lg:sticky lg:top-28">
             <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-cream/55">
               Your session
             </p>
@@ -585,7 +592,7 @@ export default function Booking() {
               Advice only. You are booking the operator&apos;s time, not a guaranteed outcome.
               Full refund if they do not show up.
             </p>
-          </div>
+          </SpotlightCard>
         </aside>
       </div>
     </div>

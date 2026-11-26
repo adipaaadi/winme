@@ -11,6 +11,7 @@ import FAQ from '../components/FAQ';
 import Reveal from '../components/Reveal';
 import ZoomText from '../components/ZoomText';
 import GlobeStage from '../components/GlobeStage';
+import { SpotlightCard } from '../components/ui/spotlight-card';
 import usePageTitle from '../lib/usePageTitle';
 import { ArrowRightIcon, BadgeCheckIcon, CalendarIcon, ShieldIcon } from '../components/icons';
 
@@ -229,7 +230,8 @@ export default function Home() {
           <div className="mt-9 grid grid-cols-1 gap-4 md:grid-cols-3">
             {services.slice(0, 3).map((service, index) => (
               <Reveal key={service.id} className="h-full" delay={index * 90}>
-                <Link
+                <SpotlightCard
+                  as={Link}
                   to="/services"
                   className="card group flex h-full flex-col p-5 transition duration-200 hover:-translate-y-0.5 hover:border-cream/30 hover:shadow-lift"
                 >
@@ -244,7 +246,7 @@ export default function Home() {
                     See who offers it
                     <ArrowRightIcon className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </span>
-                </Link>
+                </SpotlightCard>
               </Reveal>
             ))}
           </div>

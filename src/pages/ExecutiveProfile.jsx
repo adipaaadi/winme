@@ -10,6 +10,7 @@ import Avatar from '../components/Avatar';
 import Rating from '../components/Rating';
 import EmptyState from '../components/EmptyState';
 import Spinner from '../components/Spinner';
+import { SpotlightCard } from '../components/ui/spotlight-card';
 import {
   AlertIcon,
   ArrowLeftIcon,
@@ -250,7 +251,7 @@ export default function ExecutiveProfile() {
         </div>
 
         <aside className="animate-fade-up lg:sticky lg:top-28 [animation-delay:100ms]">
-          <div className="card p-6">
+          <SpotlightCard variant="border" className="card p-6">
             <div className="border-b border-line pb-5">
               <div className="flex items-baseline justify-between gap-3">
                 <p className="text-3xl font-bold tracking-[-0.02em]">
@@ -448,7 +449,7 @@ export default function ExecutiveProfile() {
             <p className="mt-2 text-center text-[11px] leading-relaxed text-cream/65">
               Advice only. Full refund if the operator does not show up.
             </p>
-          </div>
+          </SpotlightCard>
         </aside>
       </div>
     </div>
